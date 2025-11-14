@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Main from "./Main";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  //   let count = 100;
-
   const [count1, setCount1] = useState(200);
   const [count, setCount] = useState(200);
+  const navigate = useNavigate();
 
   const increase = () => {
     const value = count + 1;
@@ -42,7 +42,11 @@ const Home = () => {
 
       <button onClick={() => increase()}>increase count</button>
       <button onClick={() => increase1()}>increase the count1</button>
-      <Main count={count} />
+      <button onClick={() => navigate("/main")}>
+        Navigate to main
+      </button>
+
+      {/* <Main count={count} /> */}
     </>
   );
 };
