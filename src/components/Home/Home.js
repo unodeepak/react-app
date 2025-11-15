@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Main from "./Main";
 import { useNavigate } from "react-router-dom";
+import { Button, Divider, Rating, Typography } from "@mui/material";
 
 const Home = () => {
   const [count1, setCount1] = useState(200);
@@ -37,14 +38,21 @@ const Home = () => {
   return (
     /* JSX => Javascript + XML(HMTL) */
     <>
-      <h1>Home Component Count: {count}</h1>
-      <h1>Value of Count1 {count1}</h1>
+      <Typography variant="h2">Home Component Count: {count}</Typography>
+      <Typography variant="h2">Value of Count1 {count1}</Typography>
 
-      <button onClick={() => increase()}>increase count</button>
-      <button onClick={() => increase1()}>increase the count1</button>
-      <button onClick={() => navigate("/main")}>
+      <Button variant="contained" color="success" onClick={() => increase()}>increase count</Button>
+      <Button variant="contained" color="warning" onClick={() => increase1()}>increase the count1</Button>
+      <Button variant="contained" color="error" onClick={() => navigate("/main", { state: { count } })}>
         Navigate to main
-      </button>
+      </Button>
+      <Button variant="contained" color="error" onClick={() => navigate("/dashboard")}>
+        Dashboard
+      </Button>
+      <br />
+      <Divider /><br />
+
+      <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
 
       {/* <Main count={count} /> */}
     </>
